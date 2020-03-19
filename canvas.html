@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Using a Canvas
+    </title>
+
+</head>
+
+<body>
+    <h1>
+        Using a Canvas
+    </h1>
+    <canvas id="d1" class="lightcoral">
+
+    </canvas>
+    <canvas id="d2" class="steelblue">
+
+    </canvas>
+
+    <p>
+        <input type="button" value="Change Color" onclick="changeColor()">
+        <input type="button" value="make line" onclick="doline()">
+        <input type="button" value="make yellow" onclick="doyellow()">
+
+    </p>
+
+</body>
+
+</html>
+
+
+<style>
+    canvas {
+        width: 200px;
+        height: 100px;
+        border: 1px solid #c3c3c3;
+    }
+
+    .steelblue {
+
+        background-color: lightsteelblue;
+    }
+
+    .lightcoral {
+        background-color: lightcoral;
+    }
+</style>
+
+
+<script>
+    function doline() {
+        var dd1 = document.getElementById("d1");
+
+        dd1.style.backgroundColor = "blue";
+
+        /*var context =canvas.getContext("2d");
+        context.clearRect(10,10,canvas.width,canvas.height);
+        canvas.style.backgroundColor = "orange";
+         */
+
+    }
+
+
+    function doyellow() {
+        var dd1 = document.getElementById("d1");
+
+        dd1.style.backgroundColor = "white";
+        var ctx = dd1.getContext("2d");
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(10, 10, 40, 40);
+        ctx.fillRect(60, 10, 40, 40);
+
+        ctx.fillStyle = "black";
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello", 10, 80);
+    }
+
+    function changeColor() {
+        //var in1 = document.getElementById("myBtn");
+        var dd1 = document.getElementById("d1");
+        var dd2 = document.getElementById("d2");
+
+        dd1.className = "steelblue";
+        dd2.className = "lightcoral";
+        //dd1.style.color = "powderblue";
+        //in1.value = "Change";
+
+    }
+
+</script>

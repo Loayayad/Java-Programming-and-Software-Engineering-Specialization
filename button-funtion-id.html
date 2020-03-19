@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Button handler
+    </title>
+</head>
+
+<body>
+    <h1>button practice</h1>
+
+    <div id="div1" class="steelblue">
+        orange is my favourite color
+    </div>
+    <div id="div2" class="lightcoral">
+        red is not bad
+    </div>
+
+    <input type="button" id="myBtn" value="Change Colors" onclick="changeColor()">
+
+    <input type="button" value="Change Text" onclick="changeText()">
+</body>
+
+</html>
+
+
+<style>
+    h1 {
+        font-family: arial;
+        color: dimgray;
+    }
+
+    div {
+        width: 140px;
+        padding: 5pt;
+        margin: 10pt;
+        border: 1px solid lightgray;
+        font-size: 16pt;
+    }
+
+    .steelblue {
+
+        background-color: lightsteelblue;
+    }
+
+    .lightcoral {
+        background-color: lightcoral;
+    }
+
+    .lightcyan {
+
+        background-color: lightcyan;
+    }
+
+    .lightgreen {
+        background-color: lightgreen;
+    }
+</style>
+
+<script>
+    /*function clicked(){
+
+        if(confirm('clicked button')){
+            alert("You pressed OK!")
+        }else{
+            alert("Are you sure you want to cancel?")
+        }
+    }*/
+    function changeColor() {
+        var in1 = document.getElementById("myBtn");
+        var dd1 = document.getElementById("div1");
+        var dd2 = document.getElementById("div2");
+
+        dd1.className = "lightcyan";
+        dd2.className = "lightgreen";
+        dd1.style.color = "powderblue";
+        in1.value = "Change";
+
+    }
+
+    function changeText() {
+        var dd1 = document.getElementById("div1");
+        var dd2 = document.getElementById("div2");
+
+        dd1.innerHTML = "Erste";
+        dd2.innerHTML = "Zweite";
+    }
+
+</script>
