@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        color picker
+    </title>
+
+</head>
+
+<body>
+    <h1>
+        Using a color picker and slider
+    </h1>
+    <canvas id="d1" class="lightcoral">
+
+    </canvas>
+    <p>
+        <input type="button" value="make line" onclick="doline()">
+        <input type="color" value="#001A57" id="clr" onchange="doColor()">
+        <input type="range" min="10" max="100" value="10" id="sldr" oninput="dosquare()">
+    </p>
+</body>
+
+</html>
+
+<style>
+    h1 {
+        font-family: arial;
+        color: dimgray;
+    }
+
+    body {
+        margin: 20px;
+    }
+
+    canvas {
+        width: 300pt;
+        height: 200pt;
+        margin: 10px;
+        border: 1px solid lightgray;
+    }
+
+    .lightcoral {
+        background-color: lightcoral;
+    }
+</style>
+
+<script>
+
+    function doline() {
+        var dd1 = document.getElementById("d1");
+
+        dd1.style.backgroundColor = "blue";
+    }
+    function doColor() {
+        var dd1 = document.getElementById("d1");
+        var colorinput = document.getElementById("clr");
+        var color = colorinput.value;
+
+        dd1.style.backgroundColor = color;
+    }
+    function dosquare() {
+        var slide = document.getElementById("sldr");
+        var len = slide.value;
+
+        var dd1 = document.getElementById("d1");
+        var context = dd1.getContext("2d");
+        context.clearRect(0, 0, dd1.width, dd1.height);
+        context.fillStyle = "yellow";
+        context.fillRect(10, 10, len, len);
+        //context.fillRect(parseInt(len) + 20, 10, len, len);
+        //context.fillRect(len * 3, 10, len, len);
+
+
+
+    }
+</script>
