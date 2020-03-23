@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Composite Images
+    </title>
+</head>
+
+<body>
+
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+    </script>
+
+    <h1>Composite Images</h1>
+
+    <canvas id="fore">
+    </canvas>
+    <canvas id="back">
+    </canvas>
+
+
+    <p>
+        Foreground: <input type="file" multiple="false" accept="image/*" id="finput" onchange="fupload()">
+    </p>
+    <p>Background: <input type="file" multiple="false" accept="image/*" id="binput" onchange="bupload()">
+    </p>
+    <p>
+        <input type="button" value="Make composte" onclick="greenScreen()">
+        <input type="button" value="Clear Canvase" onclick="clearCanvas()">
+    </p>
+</body>
+
+</html>
+
+<style>
+    h1 {
+        font-family: arial;
+        color: rgb(85, 78, 189);
+    }
+
+    body {
+        background-color: rgb(170, 159, 189);
+        font-family: arial;
+        margin: 50px;
+    }
+
+    #back {
+        height: 300px;
+        width: 500px;
+        border: 1px solid lightgray;
+        align-items: baseline;
+    }
+
+    #fore {
+        height: 300px;
+        width: 500px;
+        border: 1px solid lightgray;
+    }
+</style>
+
+<script>
+    var fimage = null;
+    var bimage = null;
+    function fupload() {
+        //Get input from file input
+        var fileinput = document.getElementById("finput");
+        //Make new SimpleImage from file input
+        fimage = new SimpleImage(fileinput);
+        //Get canvas
+        var canvas = document.getElementById("fore");
+        //Draw image on canvas
+        fimage.drawTo(canvas);
+    }
+    function bupload() {
+        //Get input from file input
+        var fileinput = document.getElementById("binput");
+        //Make new SimpleImage from file input
+        bimage = new SimpleImage(fileinput);
+        //Get canvas
+        var canvas1 = document.getElementById("back");
+        //Draw image on canvas
+        bimage.drawTo(canvas1);
+    }
+    function greenScreen() {
+        if (fimage == null || !fimage.complete()) {
+            alert("Foreground not loaded");
+            return;
+        }
+        if (bimage == null || !bimage.complete()) {
+            alert("Background not loaded");
+            return;
+        }
+        clearCanvas();
+        var output = new SimpleImage(fimage.getWidth(), fimage.getHeight());
+
+        for (var pixel of fimage.values()) {
+            var x = pixel.getX();
+            var y = pixel.getY();
+            if (pixel.getGreen() > pixel.getRed() + pixel.getBlue()) {
+
+                var bgPixel = bimage.getPixel(x, y);
+
+                output.setPixel(x, y, bgPixel);
+            }
+            else {
+                output.setPixel(x, y, pixel);
+            }
+
+        }
+        var canvas = document.getElementById("fore");
+        //Draw image on canvas
+        output.drawTo(canvas);
+    }
+
+    function clearCanvas() {
+        doClear(fore);
+        doClear(back);
+    }
+    function doClear(canvas) {
+        var context = canvas.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+</script>

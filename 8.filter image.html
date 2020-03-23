@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Filter Image Project
+    </title>
+</head>
+
+<body>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    <h1>Filter Image Project</h1>
+    <h2>Filter For Fun</h2>
+    <canvas id="can"></canvas>
+    <h3>Load Image</h3>
+    <p><input type="file" multiple="false" accept="image/*" id="input" onchange="upload()"></p>
+    <h3>Choose Filter</h3>
+    <p>
+        <input type="button" value="GrayScale" onclick="grayScale()">
+        <input type="button" value="Red" onclick="redScale()">
+        <input type="button" value="Random" onclick="random()">
+    </p>
+    <p> <input type="button" value="Reset" onclick="reset()"></p>
+
+</body>
+
+</html>
+<script>
+    var orginal = null;
+
+    function imagieIsLoaded(img) {
+        if (img == null || !img.complete()) {
+            alert("image not loaded");
+            return false;
+        }
+        return true;
+
+    }
+    function upload() {
+
+        //Get input from file input
+        var fileinput = document.getElementById("input");
+        //Make new SimpleImage from file input
+        orginal = new SimpleImage(fileinput);
+        //Get canvas
+        var canvas = document.getElementById("can");
+        //Draw image on canvas
+        orginal.drawTo(canvas);
+
+    }
+    function grayScale() {
+        var grayImage = orginal;
+        if (imagieIsLoaded(grayImage)) {
+            for (var pixel of grayImage.values()) {
+                var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+                pixel.setRed(avg);
+                pixel.setGreen(avg);
+                pixel.setBlue(avg);
+            }
+            var imgcanvas = document.getElementById("can");
+            //Draw image on canvas
+            grayImage.drawTo(imgcanvas);
+        }
+    }
+    function redScale() {
+        var redImage = orginal;
+        if (imagieIsLoaded(redImage)) {
+            for (var pixel of redImage.values()) {
+                var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+                if (avg < 128) {
+                    pixel.setRed(avg * 2);
+                    pixel.setGreen(0);
+                    pixel.setBlue(0);
+                } else {
+                    pixel.setRed(255);
+                    pixel.setGreen((avg * 2) -255);
+                    pixel.setBlue((avg * 2) - 255);
+                }
+            }
+            var imgcanvas = document.getElementById("can");
+            //Draw image on canvas
+            redImage.drawTo(imgcanvas);
+        }
+
+    }
+    function random() {
+        var randImage = orginal;
+        if (imagieIsLoaded(randImage)) {
+            for (var pixel of randImage.values()) {
+                pixel.setRed(Math.floor(Math.random() * pixel.getRed()));
+                pixel.setGreen(Math.floor(Math.random() * pixel.getGreen()));
+                pixel.setBlue(Math.floor(Math.random() * pixel.getBlue()));
+            }
+            var imgcanvas = document.getElementById("can");
+            //Draw image on canvas
+            randImage.drawTo(imgcanvas);
+        }
+    }
+
+    function reset() {
+        if (imagieIsLoaded(orginal)) {
+            upload();
+        }
+    }
+</script>
+
+<style>
+    body {
+        background-color: rgb(170, 159, 189);
+        font-family: 'Times New Roman', Times, serif;
+        margin: 50px;
+    }
+
+    h1 {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(85, 78, 189);
+        font-size: 40px;
+    }
+
+    h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(85, 78, 189);
+        font-size: 30px;
+    }
+
+    #can {
+        height: 300px;
+        width: 500px;
+        border: 1px solid lightgray;
+    }
+</style>

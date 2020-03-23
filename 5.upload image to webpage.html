@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Upload and Display an Image
+    </title>
+</head>
+
+<body>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    <h1>
+        Upload and display image
+    </h1>
+    <h2>
+        upload prototype
+    </h2>
+    <canvas id="can"></canvas>
+
+    <p>
+        <!--Filename:
+        <input type="text" name="" id="finput">
+        <input type="button" value="Upload" onclick="upload()">-->
+
+        <input type="file" multiple="false" accept="image/*" id="finput" onchange="upload()">
+    </p>
+</body>
+
+</html>
+
+<style>
+    h1 {
+        font-family: arial;
+        color: dimgray;
+    }
+
+    body {
+        margin: 20px;
+    }
+
+    canvas {
+
+        height: 200px;
+        border: 1px solid lightgray;
+    }
+</style>
+
+<script>
+
+    function upload() {
+
+        var fileinput = document.getElementById("finput");
+        var image = new SimpleImage(fileinput);
+
+        var canvas = document.getElementById("can");
+        //imgcanvas.style.background = "yellow";
+
+
+        image.drawTo(canvas);
+        //var filename = fileinput.value;
+        //alert("you chose " + filename);
+    }
+
+
+</script>
