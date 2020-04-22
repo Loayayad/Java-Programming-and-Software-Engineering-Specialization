@@ -13,6 +13,6 @@ public class TheCaesarCipher {
 
         CaesarCipher c1 = new CaesarCipher();
         //c1.testCaesar();
-        c1.testEncryptTwoKeys();
+        //c1.testEncryptTwoKeys();
     }
 }

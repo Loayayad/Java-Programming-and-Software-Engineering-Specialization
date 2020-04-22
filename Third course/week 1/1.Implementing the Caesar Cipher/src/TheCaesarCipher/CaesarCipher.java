@@ -72,8 +72,8 @@ public class CaesarCipher {
 
     public void testEncryptTwoKeys() {
 
-        int key1 = 23;
-        int key2 = 17;
+        int key1 = 21;
+        int key2 = 8;
         FileResource fr = new FileResource();
         String message = fr.asString();
         String encrypted = encryptTwoKeys(message, key1, key2);
