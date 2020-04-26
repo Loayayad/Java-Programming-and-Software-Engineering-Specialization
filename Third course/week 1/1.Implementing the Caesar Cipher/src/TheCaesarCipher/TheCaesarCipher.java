@@ -11,7 +11,7 @@ public class TheCaesarCipher {
         //w1.testReplaceVowels();
         //w1.testEmphasize();
 
-        CaesarCipher c1 = new CaesarCipher();
+        //CaesarCipher c1 = new CaesarCipher();
         //c1.testCaesar();
         //c1.testEncryptTwoKeys();
     }
