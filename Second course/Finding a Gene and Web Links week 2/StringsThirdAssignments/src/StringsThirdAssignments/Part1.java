@@ -148,6 +148,7 @@ public class Part1 {
             }
 
         }
+        
         double cgRatio = count / dna.length();
         return cgRatio;
 
