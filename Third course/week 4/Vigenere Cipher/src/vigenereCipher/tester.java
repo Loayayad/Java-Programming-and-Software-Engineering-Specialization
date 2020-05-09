@@ -1,4 +1,4 @@
-package vigenereKnownLanguageAndKeyLength;
+package vigenereCipher;
 
 import edu.duke.FileResource;
 

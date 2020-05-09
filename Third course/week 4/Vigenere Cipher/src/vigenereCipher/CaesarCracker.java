@@ -1,4 +1,4 @@
-package vigenereKnownLanguageAndKeyLength;
+package vigenereCipher;
 
 public class CaesarCracker {
     char mostCommon;

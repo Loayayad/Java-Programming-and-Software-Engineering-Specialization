@@ -1,4 +1,4 @@
-package vigenereKnownLanguageAndKeyLength;
+package vigenereCipher;
 
 import java.util.*;
 import edu.duke.*;
