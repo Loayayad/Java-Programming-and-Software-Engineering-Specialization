@@ -28,7 +28,7 @@ public class LargestQuakes {
     //int indexOfTheLargestMagnitude = indexOfLargest(list);
     //System.out.println("the largest earthquake is at location "+indexOfTheLargestMagnitude+
     //" and has magnitude "+list.get(indexOfTheLargestMagnitude).getMagnitude());
-    ArrayList<QuakeEntry> close = getLargest(list,5);
+    ArrayList<QuakeEntry> close = getLargest(list,50);
     for (QuakeEntry qe : close) {
          System.out.println(qe); 
     }
