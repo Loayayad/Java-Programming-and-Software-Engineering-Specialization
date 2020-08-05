@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=sortByRating
+comment1.params=qe1\ qe2
+comment1.target=int\ compare(Rating,\ Rating)
+numComments=2

@@ -28,7 +28,7 @@ public class FirstRatings {
     
     public void testLoadMovies(){
         //ArrayList<Movie> listOfMovies = loadMovies("data/ratedmovies_short.csv");
-        ArrayList<Movie> listOfMovies = loadMovies("data/ratedmoviesfull.csv"); 
+        ArrayList<Movie> listOfMovies = loadMovies("data/ratedmovies_short.csv"); 
         int countComedy = 0;
         int countMinutes = 0;
         int countDirector = 0;
@@ -92,7 +92,7 @@ public class FirstRatings {
                 }
             }
             if(!has){
-                Rater temp = new Rater(record.get("rater_id"));
+                Rater temp = new EfficientRater(record.get("rater_id"));
                 temp.addRating(record.get("movie_id"),Double.parseDouble(record.get("rating")));
                 list.add(temp); 
             }
